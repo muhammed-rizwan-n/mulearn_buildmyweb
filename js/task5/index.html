@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON Search</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body class="d-flex flex-column align-items-center">
+    <h2>Search</h2>
+    <div class="m-5">
+      <label for="name">Name:</label>
+      <input type="text" name="" id="name" placeholder="Enter Name:" />
+    </div>
+    <button class="btn btn-dark" onclick="search()">Search</button>
+    <p id="found"></p>
+    <p id="result"></p>
+    <script>
+      details = [
+        {
+          name: "Alice",
+          age: 25,
+          place: "New York",
+          dob: "1998-03-12",
+        },
+        {
+          name: "Bob",
+          age: 32,
+          place: "Los Angeles",
+          dob: "1991-07-19",
+        },
+        {
+          name: "Charlie",
+          age: 41,
+          place: "Chicago",
+          dob: "1982-11-03",
+        },
+        {
+          name: "David",
+          age: 18,
+          place: "Houston",
+          dob: "2005-05-08",
+        },
+        {
+          name: "Emily",
+          age: 29,
+          place: "San Francisco",
+          dob: "1994-09-26",
+        },
+        {
+          name: "Frank",
+          age: 36,
+          place: "Boston",
+          dob: "1987-12-30",
+        },
+        {
+          name: "Grace",
+          age: 22,
+          place: "Miami",
+          dob: "2001-01-14",
+        },
+        {
+          name: "Harry",
+          age: 47,
+          place: "Seattle",
+          dob: "1976-06-21",
+        },
+      ];
+
+      function search() {
+        var name = document.getElementById("name").value;
+        for (var i = 0; i < details.length; i++) {
+          var temp = details[i]["name"];
+          if (temp.toUpperCase() == name.toUpperCase()) {
+            document.getElementById("found").textContent = "Found";
+            document.getElementById("result").innerHTML =
+              "Name: " +
+              details[i]["name"] +
+              "<br>Place: " +
+              details[i]["place"] +
+              "<br>Age: " +
+              details[i]["age"] +
+              "<br>Date of Birth: " +
+              details[i]["dob"];
+            return true;
+          }
+        }
+        document.getElementById("found").textContent = "Not Found!";
+        document.getElementById("result").textContent = "";
+      }
+    </script>
+  </body>
+</html>
